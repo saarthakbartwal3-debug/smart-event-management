@@ -1,0 +1,1 @@
+export default function AttendanceChart({ data=[] }){return <section className="event-card"><h3>Attendance overview</h3>{data.length?<ul>{data.map((x,i)=><li key={i}>{x.label||x.name}: {x.value??x.count??0}</li>)}</ul>:<p>Attendance chart data will appear when the analytics endpoint is connected.</p>}</section>}

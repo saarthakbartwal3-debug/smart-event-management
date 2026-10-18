@@ -1,0 +1,2 @@
+import { useState } from 'react';
+export default function QRScanner({ onScan }){const [value,setValue]=useState('');return <form className="form-card" onSubmit={e=>{e.preventDefault();onScan?.(value);}}><h3>Enter check-in code</h3><p>Camera-based scanning is not configured; enter the code manually.</p><label>Code<input value={value} onChange={e=>setValue(e.target.value)} required/></label><button>Submit code</button></form>}

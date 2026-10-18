@@ -1,0 +1,1 @@
+export default function AnalyticsCards({ items=[] }){return <div className="event-grid">{items.map(x=><article className="event-card" key={x.label}><p>{x.label}</p><h2>{x.value??'—'}</h2><small>{x.note||''}</small></article>)}</div>}

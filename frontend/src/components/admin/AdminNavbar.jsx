@@ -1,0 +1,1 @@
+export default function AdminNavbar(){return <header className="page-shell" style={{minHeight:0,paddingBottom:0}}><p className="eyebrow">EVENTEASE ADMINISTRATION</p><h2>Management console</h2></header>}

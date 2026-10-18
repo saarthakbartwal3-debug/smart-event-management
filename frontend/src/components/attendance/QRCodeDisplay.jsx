@@ -1,0 +1,1 @@
+export default function QRCodeDisplay({ value='' }){return <section className="event-card"><h3>Check-in code</h3><p>{value?`Booking reference: ${value}`:'A booking reference will appear here.'}</p><small>QR image generation is not configured in the current frontend dependencies.</small></section>}

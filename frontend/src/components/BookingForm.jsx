@@ -1,0 +1,3 @@
+import { useState } from 'react';
+import bookingService from '../services/bookingService.js';
+export default function BookingForm({ event, onSuccess }) {const [loading,setLoading]=useState(false);const [error,setError]=useState('');async function submit(){setLoading(true);setError('');try{const result=await bookingService.create(event.id);onSuccess?.(result);}catch(e){setError(e.message||'Could not create booking. Check backend support.');}finally{setLoading(false);}}return <div><button onClick={submit} disabled={loading}>{loading?'Registering…':'Register for event'}</button>{error&&<p className="error-message">{error}</p>}</div>}

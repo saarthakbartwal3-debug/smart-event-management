@@ -1,16 +1,16 @@
-# React + Vite
+# Smart Event Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite frontend for the Smart Event Management and Crowd Analytics Platform.
 
-Currently, two official plugins are available:
+## Run locally
+1. Install Node.js (LTS).
+2. In this folder run `npm install`.
+3. Start the Spring Boot backend at `http://localhost:8080`.
+4. Run `npm run dev` and open the URL printed by Vite (normally `http://localhost:5173`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Backend integration
+The event list/detail and authentication pages use the backend endpoints already described in the project (`/api/events`, `/api/auth/login`, `/api/auth/register`). Other pages call conventional endpoints such as `/api/bookings/my` and `/api/admin/analytics`; those pages need matching backend controllers to work fully. A message is shown when an endpoint is unavailable. The frontend does not create backend functionality or database tables.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+- API base URL can be overridden with `VITE_API_URL`, for example `http://localhost:8080/api`.
+- Public registration should create a normal STUDENT account. Promote an administrator only in a local development database and never expose an admin-role change to public registration.

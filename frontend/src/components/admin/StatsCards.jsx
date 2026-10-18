@@ -1,0 +1,1 @@
+export default function StatsCards({ stats=[] }){return <div className="event-grid">{stats.map(s=><article className="event-card" key={s.label}><p>{s.label}</p><h2>{s.value??'—'}</h2></article>)}</div>}

@@ -1,0 +1,2 @@
+import { useAuth } from '../hooks/useAuth.js';
+export default function ProtectedRoute({ children, admin=false }) {const {user,isAdmin}=useAuth();if(!user)return <main className="page-shell"><h1>Sign in required</h1><p>Please <a href="/login">log in</a> to view this page.</p></main>;if(admin&&!isAdmin)return <main className="page-shell"><h1>Administrator access required</h1></main>;return children;}

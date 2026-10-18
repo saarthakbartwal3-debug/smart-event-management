@@ -1,0 +1,1 @@
+export default function CrowdChart({ data=[] }){return <section className="event-card"><h3>Crowd analytics</h3>{data.length?<ul>{data.map((x,i)=><li key={i}>{x.label||x.name}: {x.value??x.count??0}</li>)}</ul>:<p>Crowd analytics data will appear when the backend provides it.</p>}</section>}

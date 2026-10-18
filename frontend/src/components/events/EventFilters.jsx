@@ -1,0 +1,1 @@
+export default function EventFilters({ value='', onChange }) {return <label className="filter-control">Search events <input value={value} onChange={e=>onChange?.(e.target.value)} placeholder="Name or keyword"/></label>}

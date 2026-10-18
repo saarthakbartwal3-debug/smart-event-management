@@ -1,0 +1,1 @@
+export default function Footer(){return <footer style={{padding:'2rem 1.25rem',textAlign:'center',color:'#77748a',borderTop:'1px solid #eceaf3'}}><strong>EventEase</strong><p>Discover events. Connect with your community.</p><small>Smart Event Management & Crowd Analytics Platform</small></footer>}

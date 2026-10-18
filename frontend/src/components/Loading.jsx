@@ -1,0 +1,1 @@
+export default function Loading({ label='Loading…' }) { return <p role="status" style={{padding:'1rem',color:'#68647d'}}>{label}</p>; }

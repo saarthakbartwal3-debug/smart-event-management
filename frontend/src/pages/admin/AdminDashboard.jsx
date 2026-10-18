@@ -1,0 +1,3 @@
+import AdminSidebar from '../../components/admin/AdminSidebar.jsx';
+import { useAuth } from '../../hooks/useAuth.js';
+export default function AdminDashboard(){const {user}=useAuth();return <main className="page-shell"><p className="eyebrow">ADMIN CONSOLE</p><h1>Dashboard</h1><p>Welcome, {user?.name||'administrator'}. Manage the platform using the sections below.</p><AdminSidebar/><div className="event-grid">{[['Manage events','/admin/events'],['Bookings','/admin/bookings'],['Users','/admin/users'],['Venues','/admin/venues'],['Attendance','/admin/attendance'],['Crowd analytics','/admin/analytics'],['Waiting list','/admin/waiting-list']].map(([name,url])=><article className="event-card" key={url}><h3>{name}</h3><a href={url}>Open section →</a></article>)}</div></main>}
