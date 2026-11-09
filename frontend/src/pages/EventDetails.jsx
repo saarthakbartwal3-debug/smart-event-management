@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import eventService from '../services/eventService.js';
 import bookingService from '../services/bookingService.js';
@@ -38,7 +37,7 @@ export default function EventDetails() {
 
   if (error && !event) {
     return (
-      <main className="page-shell">
+      <main className="page-shell event-details-page">
         <p className="error-message">{error}</p>
         <a href="/events">Back to events</a>
       </main>
@@ -46,40 +45,83 @@ export default function EventDetails() {
   }
 
   if (!event) {
-    return <main className="page-shell">Loading event details...</main>;
+    return (
+      <main className="page-shell event-details-page">
+        <p className="details-loading">Loading event details...</p>
+      </main>
+    );
   }
 
   return (
-    <main className="page-shell">
-      <a href="/events">← Back to events</a>
+    <main className="page-shell event-details-page">
 
-      <div className="page-heading">
-        <p className="eyebrow">EVENT DETAILS</p>
+      <a className="back-events-link" href="/events">
+        ← Back to events
+      </a>
+
+      <div className="details-heading">
+        <p className="details-eyebrow">EVENT DETAILS</p>
+
         <h1>{event.name}</h1>
-        <p>{event.description || 'Join us for this event.'}</p>
+
+        <p className="details-description">
+          {event.description || 'Join us for this event.'}
+        </p>
       </div>
 
-      <div className="event-card">
-        <p>📅 {formatDate(event.eventDate)}</p>
-        <p>📍 {event.venue || event.venueEntity?.name || 'Venue to be announced'}</p>
-        <p>{formatPrice(event.ticketPrice)}</p>
-        <p>Capacity: {event.capacity ?? 'Not specified'}</p>
+      <section className="event-details-card">
 
-        {message && <p>{message}</p>}
-        {error && <p className="error-message">{error}</p>}
+        <div className="details-information">
+          <p>
+            <span>📅</span>
+            {formatDate(event.eventDate)}
+          </p>
 
-        {!isAuthenticated ? (
-          <a className="primary-link" href="/login">
-            Log in to register
-          </a>
-        ) : user?.role === 'ADMIN' ? (
-          <p>Admin accounts cannot register as students.</p>
-        ) : (
-          <button onClick={handleRegister} disabled={booking}>
-            {booking ? 'Registering...' : 'Register for event'}
-          </button>
+          <p>
+            <span>📍</span>
+            {event.venue || event.venueEntity?.name || 'Venue to be announced'}
+          </p>
+
+          <p>
+            <span>🎟️</span>
+            {formatPrice(event.ticketPrice)}
+          </p>
+
+          <p>
+            <span>👥</span>
+            Capacity: {event.capacity ?? 'Not specified'}
+          </p>
+        </div>
+
+        {message && (
+          <div className="details-success">{message}</div>
         )}
-      </div>
+
+        {error && (
+          <div className="details-error">{error}</div>
+        )}
+
+        <div className="details-actions">
+          {!isAuthenticated ? (
+            <a className="details-register-button" href="/login">
+              Log in to register →
+            </a>
+          ) : user?.role === 'ADMIN' ? (
+            <p className="admin-notice">
+              Admin accounts cannot register as students.
+            </p>
+          ) : (
+            <button
+              className="details-register-button"
+              onClick={handleRegister}
+              disabled={booking}
+            >
+              {booking ? 'Registering...' : 'Register for event →'}
+            </button>
+          )}
+        </div>
+
+      </section>
     </main>
   );
 }
